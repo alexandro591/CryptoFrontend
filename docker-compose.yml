@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 networks:
   CryptoNetwork:
@@ -9,14 +9,14 @@ services:
     container_name: cryptofrontend
     working_dir: /cryptofrontend
     build: .
-    image: 'cryptofrontend'
+    image: "cryptofrontend"
     networks:
       CryptoNetwork:
         ipv4_address: 10.20.20.3
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
-      - ./app:/cryptofrontend
+      - ./:/cryptofrontend
     entrypoint: bash -c "npm run start:local"
     environment:
       MYSQL_ROOT_USER: cryptofrontend
