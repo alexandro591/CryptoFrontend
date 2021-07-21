@@ -1,0 +1,28 @@
+version: '3.5'
+
+networks:
+  CryptoNetwork:
+    external: true
+
+services:
+  db:
+    container_name: cryptofrontend
+    working_dir: /cryptofrontend
+    build: .
+    image: 'cryptofrontend'
+    networks:
+      CryptoNetwork:
+        ipv4_address: 10.20.20.3
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./app:/cryptofrontend
+    entrypoint: bash -c "npm run start:local"
+    environment:
+      MYSQL_ROOT_USER: cryptofrontend
+      MYSQL_ROOT_PASSWORD: cryptofrontend
+      MYSQL_DATABASE: cryptofrontend
+      MYSQL_USER: cryptofrontend
+      MYSQL_PASSWORD: cryptofrontend
+    tty: true
+    restart: always
