@@ -1,2 +1,2 @@
 FROM node:latest
-EXPOSE 3000
+EXPOSE 4200
